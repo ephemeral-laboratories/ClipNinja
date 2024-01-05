@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -82,7 +81,7 @@ fun HistoryScreen(clipboardEntries: List<ClipboardHistoryEntry>, settings: Setti
                                 ) {
                                     // TODO: Proper icon
                                     Icon(
-                                        imageVector = Icons.Filled.AutoAwesome,
+                                        painter = Branding.Shuriken,
                                         contentDescription = "Changes made",
                                         modifier = Modifier.requiredSize(24.dp)
                                     )

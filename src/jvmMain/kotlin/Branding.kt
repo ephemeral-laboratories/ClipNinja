@@ -9,6 +9,8 @@ import androidx.compose.ui.res.painterResource
 object Branding {
     val AppName = "Clipboard Ninja"
     val AppIcon @Composable get() = painterResource("/app-icon.svg")
+
+    val Shuriken @Composable get() = painterResource("/shuriken.svg")
 }
 
 @Composable

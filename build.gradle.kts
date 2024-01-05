@@ -27,7 +27,6 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(compose.materialIconsExtended)
                 implementation(libs.toast4j)
                 implementation(libs.jna)
             }
