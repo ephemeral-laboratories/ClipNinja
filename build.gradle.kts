@@ -61,8 +61,8 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             windows {
-
                 // FIXME: "Unknown publisher"
+                upgradeUuid = "8248B478-A580-4AAB-BBEF-EECEE1ED46E4"
             }
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "ClipboardNinja"
