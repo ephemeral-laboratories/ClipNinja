@@ -1,0 +1,13 @@
+[versions]
+
+[libraries]
+junit-jupiter-api = "org.junit.jupiter:junit-jupiter-api:5.10.1"
+junit-jupiter-engine = "org.junit.jupiter:junit-jupiter-engine:5.10.1"
+assertk = "com.willowtreeapps.assertk:assertk:0.27.0"
+toast4j = "de.mobanisto:toast4j:0.2.0"
+jna = "net.java.dev.jna:jna:5.14.0"
+jna-platform = "net.java.dev.jna:jna-platform:5.14.0"
+
+
+[plugins]
+buildkonfig = { id = "com.codingfeline.buildkonfig", version = "0.15.1" }
