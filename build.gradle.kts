@@ -30,7 +30,6 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(libs.toast4j)
                 implementation(libs.jna)
-                implementation(libs.jna.platform)
             }
         }
         val jvmTest by getting {
@@ -48,7 +47,7 @@ buildkonfig {
 
     defaultConfigs {
         buildConfigField(FieldSpec.Type.STRING, "OrganisationName", "Ephemeral Laboratories")
-        buildConfigField(FieldSpec.Type.STRING, "ApplicationName", "Clipboard Ninjatext")
+        buildConfigField(FieldSpec.Type.STRING, "ApplicationName", "Clipboard Ninja")
         buildConfigField(FieldSpec.Type.STRING, "Version", version.toString())
     }
 }
@@ -63,6 +62,7 @@ compose.desktop {
         nativeDistributions {
             windows {
 
+                // FIXME: "Unknown publisher"
             }
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "ClipboardNinja"

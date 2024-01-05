@@ -36,12 +36,12 @@ class AwtClipboardManager : ClipboardManager {
     // number necessarily means that the new clipboard will be a new value.
     private fun getWindowsContentsFlow(): Flow<ClipboardContents> {
         return flow {
-            var lastSequenceNumber = ExtraUser32.GetClipboardSequenceNumber().toInt()
+            var lastSequenceNumber = ExtraUser32.GetClipboardSequenceNumber()
             getContents()?.let { emit(it) }
 
             while (true) {
                 delay(100)
-                val currentSequenceNumber = ExtraUser32.GetClipboardSequenceNumber().toInt()
+                val currentSequenceNumber = ExtraUser32.GetClipboardSequenceNumber()
                 if (lastSequenceNumber != currentSequenceNumber) {
                     lastSequenceNumber = currentSequenceNumber
                     getContents()?.let { emit(it) }
