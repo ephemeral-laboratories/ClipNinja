@@ -13,8 +13,12 @@ and thus the clipboard ninja was born.
 
 Grab an installer from [Releases](https://github.com/ephemeral-laboratories/ClipboardNinja/releases).
 
-Currently we only have installers for Windows. If you want support for another
-platform, [file an issue](https://github.com/ephemeral-laboratories/ClipboardNinja/issues)!
+Currently, we only have installers for Windows. If you want support for another
+platform, [file an issue](https://github.com/ephemeral-laboratories/ClipboardNinja/issues).
+It might be easier to implement than you think!
+
+This app is free software, but if you find it useful and have the means,
+you might consider [sponsoring the project](https://github.com/sponsors/ephemeral-laboratories).
 
 ## Current Automations
 
