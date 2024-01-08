@@ -8,3 +8,29 @@ Are any of these stories relatable?
 
 Various workflows can be automated by watching the clipboard and replacing its contents,
 and thus the clipboard ninja was born.
+
+## Installing
+
+Grab an installer from [Releases](https://github.com/ephemeral-laboratories/ClipboardNinja/releases).
+
+Currently we only have installers for Windows. If you want support for another
+platform, [file an issue](https://github.com/ephemeral-laboratories/ClipboardNinja/issues)!
+
+## Current Automations
+
+All automations are separately toggleable.
+
+Replacing URL domain to fix embeds:
+
+| Changes URL   | To URL          |
+|---------------|-----------------|
+| `twitter.com` | `vxtwitter.com` |
+| `x.com`       | `fixupx.com`    |
+| `tiktok.com`  | `fxtiktok.com`  |
+
+Removing tracking tokens from URL:
+
+| Parameter | For URL domains           |
+|-----------|---------------------------|
+| `utm_*`   | (all)                     |
+| `si`      | `youtube.com`, `youtu.be` |
