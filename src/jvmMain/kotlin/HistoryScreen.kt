@@ -78,7 +78,6 @@ fun HistoryScreen(clipboardEntries: List<ClipboardHistoryEntry>, settings: Setti
                                         }
                                     }
                                 ) {
-                                    // TODO: Proper icon
                                     Icon(
                                         painter = Branding.Shuriken,
                                         contentDescription = "Changes made",
