@@ -26,11 +26,15 @@ All automations are separately toggleable.
 
 Replacing URL domain to fix embeds:
 
-| Changes URL   | To URL          |
-|---------------|-----------------|
-| `twitter.com` | `vxtwitter.com` |
-| `x.com`       | `fixupx.com`    |
-| `tiktok.com`  | `fxtiktok.com`  |
+| Changes URL      | To URL            |
+|------------------|-------------------|
+| `twitter.com`    | `vxtwitter.com`   |
+| `x.com`          | `fixupx.com`      |
+| `tiktok.com`     | `fxtiktok.com`    |
+| `reddit.com`     | `rxddit.com`      |
+| `www.reddit.com` | `www.rxddit.com`  |
+| `old.reddit.com` | `old.rxddit.com`  |
+| `instagram.com`  | `ddinstagram.com` |
 
 Removing tracking tokens from URL:
 

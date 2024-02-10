@@ -18,6 +18,10 @@ internal class DiscordEmbedURLFixer : URLFixer {
             "twitter.com" to "vxtwitter.com",
             "x.com" to "fixupx.com",
             "tiktok.com" to "fxtiktok.com",
+            "reddit.com" to "rxddit.com",
+            "old.reddit.com" to "old.rxddit.com",
+            "www.reddit.com" to "www.rxddit.com",
+            "instagram.com" to "ddinstagram.com"
         )
     }
 }
