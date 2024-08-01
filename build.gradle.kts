@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.buildkonfig)
 }
 
-group = "garden.ephemeral.clipboard.ninja"
+group = "garden.ephemeral.clipninja"
 version = rootProject.file("version.txt").readText().trim()
 
 
@@ -42,11 +42,12 @@ kotlin {
 }
 
 buildkonfig {
-    packageName = "garden.ephemeral.clipboard.ninja"
+    packageName = "garden.ephemeral.clipninja"
 
     defaultConfigs {
+        buildConfigField(FieldSpec.Type.STRING, "CopyrightYears", "2024")
         buildConfigField(FieldSpec.Type.STRING, "OrganisationName", "Ephemeral Laboratories")
-        buildConfigField(FieldSpec.Type.STRING, "ApplicationName", "Clipboard Ninja")
+        buildConfigField(FieldSpec.Type.STRING, "ApplicationName", "ClipNinja")
         buildConfigField(FieldSpec.Type.STRING, "Version", version.toString())
     }
 }
@@ -57,14 +58,16 @@ tasks.withType<Test> {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "garden.ephemeral.clipninja.MainKt"
         nativeDistributions {
             windows {
                 // FIXME: "Unknown publisher"
                 upgradeUuid = "8248B478-A580-4AAB-BBEF-EECEE1ED46E4"
+                menu = true
+                menuGroup = "Utilities"
             }
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "ClipboardNinja"
+            packageName = "ClipNinja"
             packageVersion = version.toString()
         }
     }

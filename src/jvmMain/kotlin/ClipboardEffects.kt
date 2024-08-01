@@ -1,9 +1,9 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 import androidx.compose.runtime.*
-import garden.ephemeral.clipboard.ninja.clipboard.AwtClipboardManager
-import garden.ephemeral.clipboard.ninja.clipboard.ClipboardContents
-import garden.ephemeral.clipboard.ninja.notifications.Notifier
+import garden.ephemeral.clipninja.clipboard.AwtClipboardManager
+import garden.ephemeral.clipninja.clipboard.ClipboardContents
+import garden.ephemeral.clipninja.notifications.Notifier
 
 @Composable
 fun ClipboardEffects(clipboardEntries: MutableList<ClipboardHistoryEntry>, settings: Settings) {

@@ -1,7 +1,7 @@
-package garden.ephemeral.clipboard.ninja.clipboard
+package garden.ephemeral.clipninja.clipboard
 
-import garden.ephemeral.clipboard.ninja.Platform
-import garden.ephemeral.clipboard.ninja.clipboard.win32.ExtraUser32
+import garden.ephemeral.clipninja.Platform
+import garden.ephemeral.clipninja.clipboard.win32.ExtraUser32
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged

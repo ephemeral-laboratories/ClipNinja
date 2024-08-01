@@ -1,6 +1,6 @@
-package garden.ephemeral.clipboard.ninja.clipboard
+package garden.ephemeral.clipninja.clipboard
 
-import garden.ephemeral.clipboard.ninja.image.ImageHolder
+import garden.ephemeral.clipninja.image.ImageHolder
 import java.awt.Image
 import java.awt.datatransfer.DataFlavor
 import java.awt.datatransfer.StringSelection

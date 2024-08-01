@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 fun <T : Any> Sequence<T>.reject(predicate: (T) -> Boolean): Sequence<T> {
     return this.filter { thing ->

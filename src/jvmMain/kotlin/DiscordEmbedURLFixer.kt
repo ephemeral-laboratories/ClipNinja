@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 /**
  * URL fixer replacing various hosts with alternative hosts which handle Discord

@@ -1,4 +1,4 @@
-# Clipboard Ninja
+# ClipNinja
 
 Are any of these stories relatable?
 
@@ -11,10 +11,10 @@ and thus the clipboard ninja was born.
 
 ## Installing
 
-Grab an installer from [Releases](https://github.com/ephemeral-laboratories/ClipboardNinja/releases).
+Grab an installer from [Releases](https://github.com/ephemeral-laboratories/ClipNinja/releases).
 
 Currently, we only have installers for Windows. If you want support for another
-platform, [file an issue](https://github.com/ephemeral-laboratories/ClipboardNinja/issues).
+platform, [file an issue](https://github.com/ephemeral-laboratories/ClipNinja/issues).
 It might be easier to implement than you think!
 
 This app is free software, but if you find it useful and have the means,

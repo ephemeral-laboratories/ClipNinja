@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 /**
  * Information about the current platform on which the application is running.

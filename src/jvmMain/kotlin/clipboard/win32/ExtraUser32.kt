@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja.clipboard.win32
+package garden.ephemeral.clipninja.clipboard.win32
 
 import com.sun.jna.Native
 import com.sun.jna.win32.StdCallLibrary

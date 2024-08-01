@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja.image
+package garden.ephemeral.clipninja.image
 
 import java.awt.Image
 import java.awt.image.BufferedImage

@@ -1,6 +1,6 @@
-package garden.ephemeral.clipboard.ninja.notifications
+package garden.ephemeral.clipninja.notifications
 
-import garden.ephemeral.clipboard.ninja.Platform
+import garden.ephemeral.clipninja.Platform
 
 /**
  * Abstraction of notification interface.

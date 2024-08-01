@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 /**
  * URL fixer removing various query parameters which are used to track the source of clicks.

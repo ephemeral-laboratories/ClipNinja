@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -7,10 +7,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 
 object Branding {
-    val AppName = "Clipboard Ninja"
+    val AppName = BuildKonfig.ApplicationName
     val AppIcon @Composable get() = painterResource("/app-icon.svg")
 
     val Shuriken @Composable get() = painterResource("/shuriken.svg")
+
+    val NinjaPicture @Composable get() = painterResource("/ninny.png")
 }
 
 @Composable

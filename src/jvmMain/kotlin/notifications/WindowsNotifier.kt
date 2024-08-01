@@ -1,10 +1,10 @@
-package garden.ephemeral.clipboard.ninja.notifications
+package garden.ephemeral.clipninja.notifications
 
 import de.mobanisto.toast4j.ToastBuilder
 import de.mobanisto.toast4j.Toaster
 import de.mobanisto.wintoast.Aumi
 import de.mobanisto.wintoast.WinToastTemplate
-import garden.ephemeral.clipboard.ninja.BuildKonfig
+import garden.ephemeral.clipninja.BuildKonfig
 import org.slf4j.LoggerFactory
 
 class WindowsNotifier : Notifier {

@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo

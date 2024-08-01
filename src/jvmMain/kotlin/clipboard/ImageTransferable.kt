@@ -1,4 +1,4 @@
-package garden.ephemeral.clipboard.ninja.clipboard
+package garden.ephemeral.clipninja.clipboard
 
 import java.awt.Image
 import java.awt.datatransfer.DataFlavor

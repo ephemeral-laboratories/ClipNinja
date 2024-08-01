@@ -1,6 +1,6 @@
-package garden.ephemeral.clipboard.ninja
+package garden.ephemeral.clipninja
 
-import garden.ephemeral.clipboard.ninja.clipboard.ClipboardContents
+import garden.ephemeral.clipninja.clipboard.ClipboardContents
 
 /**
  * Holds one entry in the clipboard history.
