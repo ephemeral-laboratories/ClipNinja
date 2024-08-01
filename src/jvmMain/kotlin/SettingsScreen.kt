@@ -37,7 +37,7 @@ fun SettingsScreen(settings: Settings) {
             Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
                 SwitchRow(settings.showAllText, "Show all text (WARNING: EXPOSES PRIVATE DATA)")
                 SwitchRow(settings.enableDiscordEmbed, "Make Discord embeds work")
-                SwitchRow(settings.enableStripTracking, "Strip tracking parameters")
+                SwitchRow(settings.enableStripTracking, "Strip tracking parameters from URLs")
             }
         }
     }
