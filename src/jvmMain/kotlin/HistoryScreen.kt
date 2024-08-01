@@ -7,11 +7,23 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.TooltipArea
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.*
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
@@ -50,7 +62,7 @@ fun HistoryScreen(clipboardEntries: List<ClipboardHistoryEntry>, settings: Setti
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             if (clipboardEntry.contents.text != null) {
-                                if (clipboardEntry.recognised || settings.showAllText.value) {
+                                if (clipboardEntry.recognised || (settings.showAllText.value && settings.reallyShowAllText.value)) {
                                     SelectionContainer {
                                         Text(text = clipboardEntry.contents.text.trim())
                                     }

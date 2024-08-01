@@ -1,3 +1,6 @@
+# Next
+- Added a second level of safety switch for showing all strings
+
 # 1.0.2
 - Slimmed down the installer by including fewer icons
 

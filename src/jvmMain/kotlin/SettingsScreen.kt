@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-@Preview
 fun SettingsScreen(settings: Settings) {
 
     @Composable
@@ -35,10 +34,18 @@ fun SettingsScreen(settings: Settings) {
     EphemeralLaboratoriesTheme {
         Surface {
             Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                SwitchRow(settings.showAllText, "Show all text (WARNING: EXPOSES PRIVATE DATA)")
+                SwitchRow(settings.showAllText, "Show all text (WARNING: WILL EXPOSE YOUR PRIVATE DATA)")
+                if (settings.showAllText.value) {
+                    SwitchRow(settings.reallyShowAllText, "Really show all text (YES EVEN YOUR PASSWORDS)")
+                }
                 SwitchRow(settings.enableDiscordEmbed, "Make Discord embeds work")
                 SwitchRow(settings.enableStripTracking, "Strip tracking parameters from URLs")
-            }
-        }
-    }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+
+@Composable
+@Preview
+fun SettingsScreenPreview() {
+    SettingsScreen(Settings())
 }
