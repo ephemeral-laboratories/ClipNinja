@@ -1,26 +1,19 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.compose.desktop.application.dsl.WindowsPlatformSettings
 
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.buildkonfig)
 }
 
 group = "garden.ephemeral.clipninja"
 version = rootProject.file("version.txt").readText().trim()
 
-
-repositories {
-    google()
-    mavenCentral()
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-}
-
 kotlin {
+    jvmToolchain(17)
     jvm {
-        jvmToolchain(11)
         withJava()
     }
     sourceSets {

@@ -1,12 +1,21 @@
 [versions]
+kotlin = "2.0.0"
+compose = "1.6.11"
+buildkonfig = "0.15.1"
+jna = "5.14.0"
+toast4j = "0.2.0"
+assertk = "0.27.0"
+junit = "5.10.1"
 
 [libraries]
-junit-jupiter-api = "org.junit.jupiter:junit-jupiter-api:5.10.1"
-junit-jupiter-engine = "org.junit.jupiter:junit-jupiter-engine:5.10.1"
-assertk = "com.willowtreeapps.assertk:assertk:0.27.0"
-toast4j = "de.mobanisto:toast4j:0.2.0"
-jna = "net.java.dev.jna:jna:5.14.0"
-
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+toast4j = { module = "de.mobanisto:toast4j", version.ref = "toast4j" }
+jna = { module = "net.java.dev.jna:jna", version.ref = "jna" }
 
 [plugins]
-buildkonfig = { id = "com.codingfeline.buildkonfig", version = "0.15.1" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
