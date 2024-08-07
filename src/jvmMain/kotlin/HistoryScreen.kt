@@ -8,7 +8,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.TooltipArea
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,6 +34,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toComposeImageBitmap
 import androidx.compose.ui.unit.dp
 import garden.ephemeral.clipninja.clipboard.ClipboardManager
+import garden.ephemeral.clipninja.clipninja.generated.resources.Res
+import garden.ephemeral.clipninja.clipninja.generated.resources.action_copy
+import garden.ephemeral.clipninja.clipninja.generated.resources.action_settings
+import garden.ephemeral.clipninja.clipninja.generated.resources.changes_made
+import garden.ephemeral.clipninja.clipninja.generated.resources.placeholder_unrecognized_data
+import garden.ephemeral.clipninja.clipninja.generated.resources.placeholder_unrecognized_text
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -52,7 +58,7 @@ fun HistoryScreen(
                     FloatingActionButton(onClick = { onSettingsClicked() }) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
-                            contentDescription = "Settings",
+                            contentDescription = stringResource(Res.string.action_settings),
                         )
                     }
                 }
@@ -82,7 +88,7 @@ fun HistoryScreen(
                                             Text(text = clipboardEntry.contents.text.trim())
                                         }
                                     } else {
-                                        Text(text = "[UNRECOGNISED TEXT REDACTED]")
+                                        Text(text = stringResource(Res.string.placeholder_unrecognized_text))
                                     }
                                 } else if (clipboardEntry.contents.image != null) {
                                     Image(
@@ -92,7 +98,7 @@ fun HistoryScreen(
                                             .sizeIn(maxWidth = 360.dp, maxHeight = 360.dp)
                                     )
                                 } else {
-                                    Text(text = "[UNRECOGNISED DATA]")
+                                    Text(text = stringResource(Res.string.placeholder_unrecognized_data))
                                 }
                             }
 
@@ -105,16 +111,12 @@ fun HistoryScreen(
                                 if (clipboardEntry.changesApplied.isNotEmpty()) {
                                     TooltipArea(
                                         tooltip = {
-                                            Column {
-                                                clipboardEntry.changesApplied.forEach { change ->
-                                                    Text(text = change)
-                                                }
-                                            }
+                                            Text(text = clipboardEntry.formatChangesApplied())
                                         }
                                     ) {
                                         Icon(
                                             painter = Branding.Shuriken,
-                                            contentDescription = "Changes made",
+                                            contentDescription = stringResource(Res.string.changes_made),
                                             modifier = Modifier.requiredSize(24.dp)
                                         )
                                     }
@@ -125,7 +127,7 @@ fun HistoryScreen(
                                     onClick = { clipboardManager.setContents(clipboardEntry.contents) },
                                     modifier = Modifier.defaultMinSize(minWidth = 1.dp, minHeight = 1.dp),
                                 ) {
-                                    Text(text = "Copy")
+                                    Text(text = stringResource(Res.string.action_copy))
                                 }
                             }
                         }

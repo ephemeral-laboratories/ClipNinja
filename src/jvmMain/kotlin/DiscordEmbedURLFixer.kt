@@ -1,14 +1,21 @@
 package garden.ephemeral.clipninja
 
+import garden.ephemeral.clipninja.clipninja.generated.resources.Res
+import garden.ephemeral.clipninja.clipninja.generated.resources.change_replaced_domain_to_fix_embeds
+import org.jetbrains.compose.resources.getString
+
 /**
  * URL fixer replacing various hosts with alternative hosts which handle Discord
  * embeds better.
  */
 internal class DiscordEmbedURLFixer : URLFixer {
-    override fun fix(url: URL): Pair<URL, String?> {
+    override suspend fun fix(url: URL): Pair<URL, String?> {
         val replacementHost = replacements[url.host]
         if (replacementHost != null) {
-            return modified(url.copy(host = replacementHost), "Replaced URL domain to fix embeds")
+            return modified(
+                url.copy(host = replacementHost),
+                getString(Res.string.change_replaced_domain_to_fix_embeds),
+            )
         }
         return unmodified(url)
     }

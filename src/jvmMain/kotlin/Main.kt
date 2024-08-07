@@ -13,6 +13,12 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
 import garden.ephemeral.clipninja.clipboard.AwtClipboardManager
+import garden.ephemeral.clipninja.clipninja.generated.resources.Res
+import garden.ephemeral.clipninja.clipninja.generated.resources.action_exit
+import garden.ephemeral.clipninja.clipninja.generated.resources.action_settings
+import garden.ephemeral.clipninja.clipninja.generated.resources.action_show_window
+import garden.ephemeral.clipninja.clipninja.generated.resources.settings_title_format
+import org.jetbrains.compose.resources.stringResource
 
 fun main() = application {
     var isOpen by remember { mutableStateOf(true) }
@@ -31,10 +37,10 @@ fun main() = application {
                 // FIXME: "Show Window" text should be bold
                 // FIXME: The whole menu should be in dark mode but currently looks like Windows 95 :(
                 //        JetBrains' Toolbox app seems to do it somehow, but how?
-                Item("Show Window") { showHistoryWindow = true }
-                Item("Settings") { showSettingsWindow = true }
+                Item(stringResource(Res.string.action_show_window)) { showHistoryWindow = true }
+                Item(stringResource(Res.string.action_settings)) { showSettingsWindow = true }
                 Separator()
-                Item("Exit") { isOpen = false }
+                Item(stringResource(Res.string.action_exit)) { isOpen = false }
             }
         )
 
@@ -66,7 +72,7 @@ fun main() = application {
         if (showSettingsWindow) {
             Window(
                 state = rememberWindowState(size = DpSize.Unspecified),
-                title = "${Branding.AppName} Settings",
+                title = stringResource(Res.string.settings_title_format, Branding.AppName),
                 icon = Branding.AppIcon,
                 resizable = false,
                 onCloseRequest = { showSettingsWindow = false }

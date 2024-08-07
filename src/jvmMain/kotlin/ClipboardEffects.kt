@@ -54,7 +54,7 @@ fun ClipboardEffects(clipboardManager: ClipboardManager, clipboardEntries: Mutab
             clipboardEntries.add(0, newEntry)
 
             if (originalUrl != url) {
-                Notifier.notify(newEntry.formatChangesApplied())
+                Notifier.notify(newEntry.formatChangesAppliedAsync())
 
                 // This will be picked up as a new history entry the next time we refresh,
                 // so no need to add it as an entry here.

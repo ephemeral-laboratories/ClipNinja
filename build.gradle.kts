@@ -17,19 +17,18 @@ kotlin {
         withJava()
     }
     sourceSets {
-        val jvmMain by getting {
-            dependencies {
-                implementation(compose.desktop.currentOs)
-                implementation(libs.toast4j)
-                implementation(libs.jna)
-            }
+        commonMain.dependencies {
+            implementation(compose.components.resources)
         }
-        val jvmTest by getting {
-            dependencies {
-                implementation(libs.junit.jupiter.api)
-                implementation(libs.assertk)
-                runtimeOnly(libs.junit.jupiter.engine)
-            }
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(libs.toast4j)
+            implementation(libs.jna)
+        }
+        jvmTest.dependencies {
+            implementation(libs.junit.jupiter.api)
+            implementation(libs.assertk)
+            runtimeOnly(libs.junit.jupiter.engine)
         }
     }
 }
@@ -64,4 +63,9 @@ compose.desktop {
             packageVersion = version.toString()
         }
     }
+}
+
+compose.resources {
+    // It didn't seem to generate the Res file without this...
+    generateResClass = always
 }

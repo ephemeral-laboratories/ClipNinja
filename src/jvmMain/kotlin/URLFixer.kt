@@ -14,7 +14,7 @@ interface URLFixer {
      * @return a pair containing, the URL, potentially modified, and optionally a
      *         string describing what modification was made.
      */
-    fun fix(url: URL): Pair<URL, String?>
+    suspend fun fix(url: URL): Pair<URL, String?>
 
     /**
      * Convenience method to create a pair with the unmodified URL and no explanation.

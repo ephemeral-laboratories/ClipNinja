@@ -21,6 +21,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import garden.ephemeral.clipninja.clipninja.generated.resources.Res
+import garden.ephemeral.clipninja.clipninja.generated.resources.copyright_format
+import garden.ephemeral.clipninja.clipninja.generated.resources.make_discord_embeds_work
+import garden.ephemeral.clipninja.clipninja.generated.resources.really_show_all_text
+import garden.ephemeral.clipninja.clipninja.generated.resources.show_all_text
+import garden.ephemeral.clipninja.clipninja.generated.resources.strip_tracking_parameters
+import garden.ephemeral.clipninja.clipninja.generated.resources.version_format
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SettingsScreen(settings: Settings) {
@@ -42,12 +50,12 @@ fun SettingsScreen(settings: Settings) {
     EphemeralLaboratoriesTheme {
         Surface {
             Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                SwitchRow(settings.showAllText, "Show all text (WARNING: WILL EXPOSE YOUR PRIVATE DATA)")
+                SwitchRow(settings.showAllText, stringResource(Res.string.show_all_text))
                 if (settings.showAllText.value) {
-                    SwitchRow(settings.reallyShowAllText, "Really show all text (YES EVEN YOUR PASSWORDS)")
+                    SwitchRow(settings.reallyShowAllText, stringResource(Res.string.really_show_all_text))
                 }
-                SwitchRow(settings.enableDiscordEmbed, "Make Discord embeds work")
-                SwitchRow(settings.enableStripTracking, "Strip tracking parameters from URLs")
+                SwitchRow(settings.enableDiscordEmbed, stringResource(Res.string.make_discord_embeds_work))
+                SwitchRow(settings.enableStripTracking, stringResource(Res.string.strip_tracking_parameters))
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -56,9 +64,24 @@ fun SettingsScreen(settings: Settings) {
                 SelectionContainer {
                     Column(horizontalAlignment = Alignment.Start, modifier = Modifier.wrapContentSize()) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(text = "${BuildKonfig.ApplicationName} v ${BuildKonfig.Version}", fontSize = 20.sp, style = MaterialTheme.typography.h6)
+
+                        Text(
+                            text = stringResource(
+                                Res.string.version_format,
+                                BuildKonfig.ApplicationName,
+                                BuildKonfig.Version,
+                            ),
+                            fontSize = 20.sp,
+                            style = MaterialTheme.typography.h6,
+                        )
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = "Copyright © ${BuildKonfig.CopyrightYears} ${BuildKonfig.OrganisationName}")
+                        Text(
+                            text = stringResource(
+                                Res.string.copyright_format,
+                                BuildKonfig.CopyrightYears,
+                                BuildKonfig.OrganisationName,
+                            ),
+                        )
                     }
                 }
             }

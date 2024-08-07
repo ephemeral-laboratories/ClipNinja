@@ -1,0 +1,24 @@
+<resources>
+    <string name="changes_applied_heading">Changes applied:</string>
+    <string name="change_replaced_domain_to_fix_embeds">Replaced URL domain to fix embeds</string>
+    <string name="change_removed_tracking_tokens">Removed tracking tokens from URL</string>
+
+    <string name="action_show_window">Show Window</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_exit">Exit</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title_format">"%1$s Settings"</string>
+    <string name="show_all_text">"Show all text (WARNING: WILL EXPOSE YOUR PRIVATE DATA)"</string>
+    <string name="really_show_all_text">Really show all text (YES EVEN YOUR PASSWORDS)</string>
+    <string name="make_discord_embeds_work">Make Discord embeds work</string>
+    <string name="strip_tracking_parameters">Strip tracking parameters from URLs</string>
+    <string name="version_format">%1$s v %2$s</string>
+    <string name="copyright_format">Copyright © %1$s %2$s</string>
+
+    <!-- History screen -->
+    <string name="changes_made">Changes made</string>
+    <string name="placeholder_unrecognized_text">[UNRECOGNISED TEXT REDACTED]</string>
+    <string name="placeholder_unrecognized_data">[UNRECOGNISED DATA]</string>
+</resources>
