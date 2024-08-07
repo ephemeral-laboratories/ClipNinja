@@ -1,14 +1,15 @@
 package garden.ephemeral.clipninja
 
-import androidx.compose.runtime.*
-import garden.ephemeral.clipninja.clipboard.AwtClipboardManager
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import garden.ephemeral.clipninja.clipboard.ClipboardContents
+import garden.ephemeral.clipninja.clipboard.ClipboardManager
 import garden.ephemeral.clipninja.notifications.Notifier
 
 @Composable
-fun ClipboardEffects(clipboardEntries: MutableList<ClipboardHistoryEntry>, settings: Settings) {
-    val clipboardManager = remember { AwtClipboardManager() }
-
+fun ClipboardEffects(clipboardManager: ClipboardManager, clipboardEntries: MutableList<ClipboardHistoryEntry>, settings: Settings) {
     val fixers by derivedStateOf {
         buildList {
             if (settings.enableDiscordEmbed.value) {
@@ -45,18 +46,18 @@ fun ClipboardEffects(clipboardEntries: MutableList<ClipboardHistoryEntry>, setti
                 }
             }
 
-            clipboardEntries.add(
-                0, ClipboardHistoryEntry(
-                    contents = contents,
-                    recognised = true,
-                    changesApplied = changesApplied.toList()
-                )
+            val newEntry = ClipboardHistoryEntry(
+                contents = contents,
+                recognised = true,
+                changesApplied = changesApplied.toList()
             )
+            clipboardEntries.add(0, newEntry)
 
             if (originalUrl != url) {
-                changesApplied.add(0, "Changes applied:")
-                Notifier.notify(changesApplied.joinToString(separator = "\n \u2022"))
+                Notifier.notify(newEntry.formatChangesApplied())
 
+                // This will be picked up as a new history entry the next time we refresh,
+                // so no need to add it as an entry here.
                 clipboardManager.setContents(ClipboardContents(text = url.toString(), image = null))
             }
         }

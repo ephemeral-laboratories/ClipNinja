@@ -12,14 +12,13 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
+import garden.ephemeral.clipninja.clipboard.AwtClipboardManager
 
 fun main() = application {
     var isOpen by remember { mutableStateOf(true) }
     var showHistoryWindow by remember { mutableStateOf(true) }
-    val historyWindowState = rememberWindowState(size = DpSize(800.dp, 1_200.dp))
-    val settings = rememberSettings()
     var showSettingsWindow by remember { mutableStateOf(false) }
-    val settingsWindowState = rememberWindowState(size = DpSize.Unspecified)
+    val settings = rememberSettings()
 
     if (isOpen) {
         val trayState = rememberTrayState()
@@ -39,28 +38,34 @@ fun main() = application {
             }
         )
 
+        val clipboardManager = remember { AwtClipboardManager() }
         val clipboardEntries = remember { mutableStateListOf<ClipboardHistoryEntry>() }
 
-        ClipboardEffects(clipboardEntries = clipboardEntries, settings = settings)
+        ClipboardEffects(
+            clipboardManager = clipboardManager,
+            clipboardEntries = clipboardEntries,
+            settings = settings,
+        )
 
         if (showHistoryWindow) {
             Window(
-                state = historyWindowState,
+                state = rememberWindowState(size = DpSize(800.dp, 1_200.dp)),
                 title = Branding.AppName,
                 icon = Branding.AppIcon,
                 onCloseRequest = { showHistoryWindow = false }
             ) {
                 HistoryScreen(
+                    clipboardManager = clipboardManager,
                     clipboardEntries = clipboardEntries,
                     settings = settings,
-                    onSettingsClicked = { showSettingsWindow = !showSettingsWindow }
+                    onSettingsClicked = { showSettingsWindow = !showSettingsWindow },
                 )
             }
         }
 
         if (showSettingsWindow) {
             Window(
-                state = settingsWindowState,
+                state = rememberWindowState(size = DpSize.Unspecified),
                 title = "${Branding.AppName} Settings",
                 icon = Branding.AppIcon,
                 resizable = false,
