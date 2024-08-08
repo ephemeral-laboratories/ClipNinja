@@ -7,9 +7,14 @@ import org.jetbrains.compose.resources.getString
 /**
  * URL fixer removing various query parameters which are used to track the source of clicks.
  */
-internal class RemoveTrackingURLFixer : URLFixer {
+internal object RemoveTrackingURLFixer : URLFixer {
+    private const val UTM_PREFIX = "utm_"
+    private const val YOUTUBE_TRACKING_QUERY_KEY = "si"
+
+    private val KNOWN_YOUTUBE_DOMAINS = setOf("youtube.com", "youtu.be")
+
     override suspend fun fix(url: URL): Pair<URL, String?> {
-        if (url.query != null && url.query.keys.any { k -> k.startsWith(UTM_PREFIX) }) {
+        if (url.query != null) {
             val newUrl = url.copy(query = url.query.asSequence()
                 .reject { (k, _) -> isTrackingQueryKey(url, k) }
                 .toMap()
@@ -21,21 +26,17 @@ internal class RemoveTrackingURLFixer : URLFixer {
     }
 
     private fun isTrackingQueryKey(url: URL, queryKey: String): Boolean {
+        println("isTrackingQueryKey($url, $queryKey)")
         if (queryKey.startsWith(UTM_PREFIX)) {
             return true
         }
 
         if (url.host in KNOWN_YOUTUBE_DOMAINS) {
+            println("known YouTube domain")
             return queryKey == YOUTUBE_TRACKING_QUERY_KEY
         }
+        println("not YouTube domain")
 
         return false
-    }
-
-    companion object {
-        const val UTM_PREFIX = "utm_"
-        const val YOUTUBE_TRACKING_QUERY_KEY = "si"
-
-        val KNOWN_YOUTUBE_DOMAINS = setOf("youtube.com", "youtu.be")
     }
 }

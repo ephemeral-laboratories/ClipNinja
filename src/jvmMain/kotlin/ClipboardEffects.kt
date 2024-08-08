@@ -13,10 +13,10 @@ fun ClipboardEffects(clipboardManager: ClipboardManager, clipboardEntries: Mutab
     val fixers by derivedStateOf {
         buildList {
             if (settings.enableDiscordEmbed.value) {
-                add(DiscordEmbedURLFixer())
+                add(DiscordEmbedURLFixer)
             }
             if (settings.enableStripTracking.value) {
-                add(RemoveTrackingURLFixer())
+                add(RemoveTrackingURLFixer)
             }
         }
     }

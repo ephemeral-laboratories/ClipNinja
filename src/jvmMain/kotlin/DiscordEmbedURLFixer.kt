@@ -8,7 +8,17 @@ import org.jetbrains.compose.resources.getString
  * URL fixer replacing various hosts with alternative hosts which handle Discord
  * embeds better.
  */
-internal class DiscordEmbedURLFixer : URLFixer {
+internal object DiscordEmbedURLFixer : URLFixer {
+    private val replacements = mapOf(
+        "twitter.com" to "vxtwitter.com",
+        "x.com" to "fixupx.com",
+        "tiktok.com" to "fxtiktok.com",
+        "reddit.com" to "rxddit.com",
+        "old.reddit.com" to "old.rxddit.com",
+        "www.reddit.com" to "www.rxddit.com",
+        "instagram.com" to "ddinstagram.com"
+    )
+
     override suspend fun fix(url: URL): Pair<URL, String?> {
         val replacementHost = replacements[url.host]
         if (replacementHost != null) {
@@ -18,17 +28,5 @@ internal class DiscordEmbedURLFixer : URLFixer {
             )
         }
         return unmodified(url)
-    }
-
-    companion object {
-        val replacements = mapOf(
-            "twitter.com" to "vxtwitter.com",
-            "x.com" to "fixupx.com",
-            "tiktok.com" to "fxtiktok.com",
-            "reddit.com" to "rxddit.com",
-            "old.reddit.com" to "old.rxddit.com",
-            "www.reddit.com" to "www.rxddit.com",
-            "instagram.com" to "ddinstagram.com"
-        )
     }
 }
