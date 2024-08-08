@@ -5,6 +5,7 @@ buildkonfig = "0.15.1"
 jna = "5.14.0"
 toast4j = "0.2.0"
 kotest = "5.9.1"
+junit = "5.10.3"
 
 [libraries]
 toast4j = { module = "de.mobanisto:toast4j", version.ref = "toast4j" }
@@ -12,6 +13,7 @@ jna = { module = "net.java.dev.jna:jna", version.ref = "jna" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

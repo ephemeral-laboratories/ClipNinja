@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import garden.ephemeral.clipninja.BuildKonfig
@@ -36,7 +37,10 @@ fun SettingsScreen(settings: Settings) {
 
     @Composable
     fun SwitchRow(state: MutableState<Boolean>, label: String) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.testTag("SwitchRow"),
+        ) {
             Switch(
                 checked = state.value,
                 onCheckedChange = { state.value = it }
