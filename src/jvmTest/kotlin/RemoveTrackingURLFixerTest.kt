@@ -20,6 +20,8 @@ class RemoveTrackingURLFixerTest : FreeSpec({
         explanation.shouldBe("Removed tracking tokens from URL")
     }
 
+    // Since the list of tracking parameters is currently data-driven, testing just one site should suffice.
+    // If we end up wanting to thoroughly test all of them, we'll want to make the test data-driven as well.
     "removes si parameter" - {
         "for YouTube URLs" {
             val originalUrl = URL("https", "youtube.com", "/mYekiVRnM_A", mapOf("si" to "eKqSQe5NZLDjRq2e"))

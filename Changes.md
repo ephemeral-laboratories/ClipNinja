@@ -3,6 +3,8 @@
 - Renamed application to avoid stepping on someone else's name
 - Copy button to copy previous clipboard content back to the clipboard
 - Fixed removal of tracking parameters for YouTube URLs
+- Added known tracking params for Twitter, Instagram, Amazon, Handelsblatt
+  (the same sites known by Firefox for its similar feature)
 
 # 1.0.2
 - Slimmed down the installer by including fewer icons

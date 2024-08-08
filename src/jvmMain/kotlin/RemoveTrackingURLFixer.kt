@@ -9,9 +9,58 @@ import org.jetbrains.compose.resources.getString
  */
 internal object RemoveTrackingURLFixer : URLFixer {
     private const val UTM_PREFIX = "utm_"
-    private const val YOUTUBE_TRACKING_QUERY_KEY = "si"
 
-    private val KNOWN_YOUTUBE_DOMAINS = setOf("youtube.com", "youtu.be")
+    private data class KnownSiteEntry(
+        val shortName: String,
+        val queryKeys: Set<String>,
+        val domains: Set<String>,
+    )
+
+    // Compare with the list at: chrome://global/content/antitracking/StripOnShare.json
+    private val knownSites = listOf(
+        KnownSiteEntry(
+            shortName = "YouTube",
+            queryKeys = setOf("si"),
+            domains = setOf("www.youtube.com", "youtube.com", "youtu.be"),
+        ),
+        KnownSiteEntry(
+            shortName = "Twitter",
+            queryKeys = setOf("ref_src", "ref_url"),
+            domains = setOf("www.twitter.com", "twitter.com", "www.x.com", "x.com"),
+        ),
+        KnownSiteEntry(
+            shortName = "Instagram",
+            queryKeys = setOf("igshid", "ig_rid"),
+            domains = setOf("www.instagram.com", "instagram.com"),
+        ),
+        KnownSiteEntry(
+            shortName = "Amazon",
+            queryKeys = setOf("keywords", "pd_rd_r", "pd_rd_w", "pd_rd_wg", "pf_rd_r", "pf_rd_p", "sr", "content-id"),
+            domains = setOf(
+                "www.amazon.com", "amazon.com",
+                "www.amazon.de", "amazon.de",
+                "www.amazon.nl", "amazon.nl",
+                "www.amazon.fr", "amazon.fr",
+                "www.amazon.co.jp", "amazon.co.jp",
+                "www.amazon.in", "amazon.in",
+                "www.amazon.es", "amazon.es",
+                "www.amazon.ac", "amazon.ac",
+                "www.amazon.cn", "amazon.cn",
+                "www.amazon.eg", "amazon.eg",
+                "www.amazon.in", "amazon.in",
+                "www.amazon.co.uk", "amazon.co.uk",
+                "www.amazon.it", "amazon.it",
+                "www.amazon.pl", "amazon.pl",
+                "www.amazon.sg", "amazon.sg",
+                "www.amazon.ca", "amazon.ca",
+            )
+        ),
+        KnownSiteEntry(
+            shortName = "Handelsblatt",
+            queryKeys = setOf("share"),
+            domains = setOf("www.handelsblatt.com", "handelsblatt.com"),
+        ),
+    )
 
     override suspend fun fix(url: URL): Pair<URL, String?> {
         if (url.query != null) {
@@ -26,16 +75,15 @@ internal object RemoveTrackingURLFixer : URLFixer {
     }
 
     private fun isTrackingQueryKey(url: URL, queryKey: String): Boolean {
-        println("isTrackingQueryKey($url, $queryKey)")
         if (queryKey.startsWith(UTM_PREFIX)) {
             return true
         }
 
-        if (url.host in KNOWN_YOUTUBE_DOMAINS) {
-            println("known YouTube domain")
-            return queryKey == YOUTUBE_TRACKING_QUERY_KEY
+        knownSites.forEach { site ->
+            if (url.host in site.domains) {
+                return queryKey in site.queryKeys
+            }
         }
-        println("not YouTube domain")
 
         return false
     }
