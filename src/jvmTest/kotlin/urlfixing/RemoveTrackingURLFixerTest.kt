@@ -1,5 +1,6 @@
-package garden.ephemeral.clipninja
+package garden.ephemeral.clipninja.urlfixing
 
+import garden.ephemeral.clipninja.util.URL
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.shouldBe

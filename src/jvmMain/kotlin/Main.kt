@@ -18,6 +18,13 @@ import garden.ephemeral.clipninja.clipninja.generated.resources.action_exit
 import garden.ephemeral.clipninja.clipninja.generated.resources.action_settings
 import garden.ephemeral.clipninja.clipninja.generated.resources.action_show_window
 import garden.ephemeral.clipninja.clipninja.generated.resources.settings_title_format
+import garden.ephemeral.clipninja.ui.Branding
+import garden.ephemeral.clipninja.ui.ClipboardEffects
+import garden.ephemeral.clipninja.ui.ClipboardHistoryEntry
+import garden.ephemeral.clipninja.ui.HistoryScreen
+import garden.ephemeral.clipninja.ui.SettingsScreen
+import garden.ephemeral.clipninja.ui.rememberSettings
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
 
 fun main() = application {
