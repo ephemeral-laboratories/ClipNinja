@@ -31,10 +31,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLocalization
 import androidx.compose.ui.unit.dp
 import garden.ephemeral.clipninja.clipboard.ClipboardManager
 import garden.ephemeral.clipninja.clipninja.generated.resources.Res
-import garden.ephemeral.clipninja.clipninja.generated.resources.action_copy
 import garden.ephemeral.clipninja.clipninja.generated.resources.action_settings
 import garden.ephemeral.clipninja.clipninja.generated.resources.changes_made
 import garden.ephemeral.clipninja.clipninja.generated.resources.placeholder_unrecognized_data
@@ -126,7 +126,7 @@ fun HistoryScreen(
                                     onClick = { clipboardManager.setContents(clipboardEntry.contents) },
                                     modifier = Modifier.defaultMinSize(minWidth = 1.dp, minHeight = 1.dp),
                                 ) {
-                                    Text(text = stringResource(Res.string.action_copy))
+                                    Text(text = LocalLocalization.current.copy)
                                 }
                             }
                         }
