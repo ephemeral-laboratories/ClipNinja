@@ -4,15 +4,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import garden.ephemeral.clipninja.util.URL
 import garden.ephemeral.clipninja.clipboard.ClipboardContents
 import garden.ephemeral.clipninja.clipboard.ClipboardManager
 import garden.ephemeral.clipninja.notifications.Notifier
 import garden.ephemeral.clipninja.urlfixing.DiscordEmbedURLFixer
 import garden.ephemeral.clipninja.urlfixing.RemoveTrackingURLFixer
+import garden.ephemeral.clipninja.util.URL
 
 @Composable
-fun ClipboardEffects(clipboardManager: ClipboardManager, clipboardEntries: MutableList<ClipboardHistoryEntry>, settings: Settings) {
+fun ClipboardEffects(
+    clipboardManager: ClipboardManager,
+    clipboardEntries: MutableList<ClipboardHistoryEntry>,
+    notifier: Notifier,
+    settings: Settings,
+) {
     val fixers by derivedStateOf {
         buildList {
             if (settings.enableDiscordEmbed.value) {
@@ -57,7 +62,7 @@ fun ClipboardEffects(clipboardManager: ClipboardManager, clipboardEntries: Mutab
             clipboardEntries.add(0, newEntry)
 
             if (originalUrl != url) {
-                Notifier.notify(newEntry.formatChangesAppliedAsync())
+                notifier.notify(newEntry.formatChangesAppliedAsync())
 
                 // This will be picked up as a new history entry the next time we refresh,
                 // so no need to add it as an entry here.
@@ -65,5 +70,4 @@ fun ClipboardEffects(clipboardManager: ClipboardManager, clipboardEntries: Mutab
             }
         }
     }
-
 }

@@ -31,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toComposeImageBitmap
 import androidx.compose.ui.unit.dp
 import garden.ephemeral.clipninja.clipboard.ClipboardManager
 import garden.ephemeral.clipninja.clipninja.generated.resources.Res
@@ -92,7 +91,7 @@ fun HistoryScreen(
                                     }
                                 } else if (clipboardEntry.contents.image != null) {
                                     Image(
-                                        bitmap = clipboardEntry.contents.image.toImage().toComposeImageBitmap(),
+                                        bitmap = clipboardEntry.contents.image.toComposeImageBitmap(),
                                         contentDescription = "",
                                         modifier = Modifier
                                             .sizeIn(maxWidth = 360.dp, maxHeight = 360.dp)
