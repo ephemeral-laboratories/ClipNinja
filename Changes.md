@@ -1,4 +1,4 @@
-# Next
+# 1.0.3
 - Added a second level of safety switch for showing all strings
 - Renamed application to avoid stepping on someone else's name
 - Copy button to copy previous clipboard content back to the clipboard
