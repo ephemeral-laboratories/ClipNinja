@@ -1,5 +1,6 @@
 package garden.ephemeral.clipninja
 
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +13,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
+import garden.ephemeral.clipninja.autorun.rememberAutoRunRegistry
 import garden.ephemeral.clipninja.clipboard.rememberClipboardManager
 import garden.ephemeral.clipninja.clipninja.generated.resources.Res
 import garden.ephemeral.clipninja.clipninja.generated.resources.action_exit
@@ -31,6 +33,14 @@ fun main() = application {
     var showHistoryWindow by remember { mutableStateOf(true) }
     var showSettingsWindow by remember { mutableStateOf(false) }
     val settings = rememberSettings()
+    val autoRunRegistry = rememberAutoRunRegistry()
+
+    LaunchedEffect(Unit) {
+        settings.runOnStartup.value = autoRunRegistry.isInstalled()
+    }
+    LaunchedEffect(settings.runOnStartup.value) {
+        settings.runOnStartup.value = autoRunRegistry.updateInstalled(settings.runOnStartup.value)
+    }
 
     val trayState = rememberTrayState()
     Tray(

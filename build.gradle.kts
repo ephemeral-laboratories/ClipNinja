@@ -24,6 +24,7 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.toast4j)
             implementation(libs.jna)
+            implementation(libs.jna.platform)
         }
         jvmTest.dependencies {
             implementation(libs.kotest.runner.junit5)

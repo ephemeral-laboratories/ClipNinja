@@ -1,3 +1,6 @@
+# Unreleased
+- Added setting to run on startup
+
 # 1.0.4
 - Changed fixup domain for TikTok to vxtiktok
 - Added subdomain matching for embed fixing

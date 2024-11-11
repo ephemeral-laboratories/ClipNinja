@@ -9,7 +9,8 @@
 
     <!-- Settings screen -->
     <string name="settings_title_format">"%1$s Settings"</string>
-    <string name="show_all_text">"Show all text (WARNING: WILL EXPOSE YOUR PRIVATE DATA)"</string>
+    <string name="run_on_startup">Run on startup</string>
+    <string name="show_all_text">Show all text (WARNING: WILL EXPOSE YOUR PRIVATE DATA)</string>
     <string name="really_show_all_text">Really show all text (YES EVEN YOUR PASSWORDS)</string>
     <string name="make_discord_embeds_work">Make Discord embeds work</string>
     <string name="strip_tracking_parameters">Strip tracking parameters from URLs</string>

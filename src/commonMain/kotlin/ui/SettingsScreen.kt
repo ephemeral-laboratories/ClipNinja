@@ -27,6 +27,7 @@ import garden.ephemeral.clipninja.clipninja.generated.resources.Res
 import garden.ephemeral.clipninja.clipninja.generated.resources.copyright_format
 import garden.ephemeral.clipninja.clipninja.generated.resources.make_discord_embeds_work
 import garden.ephemeral.clipninja.clipninja.generated.resources.really_show_all_text
+import garden.ephemeral.clipninja.clipninja.generated.resources.run_on_startup
 import garden.ephemeral.clipninja.clipninja.generated.resources.show_all_text
 import garden.ephemeral.clipninja.clipninja.generated.resources.strip_tracking_parameters
 import garden.ephemeral.clipninja.clipninja.generated.resources.version_format
@@ -55,6 +56,7 @@ fun SettingsScreen(settings: Settings) {
     EphemeralLaboratoriesTheme {
         Surface {
             Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+                SwitchRow(settings.runOnStartup, stringResource(Res.string.run_on_startup))
                 SwitchRow(settings.showAllText, stringResource(Res.string.show_all_text))
                 if (settings.showAllText.value) {
                     SwitchRow(settings.reallyShowAllText, stringResource(Res.string.really_show_all_text))
