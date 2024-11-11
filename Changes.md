@@ -1,4 +1,5 @@
-# Unreleased
+# 1.0.4
+- Changed fixup domain for TikTok to vxtiktok
 - Added subdomain matching for embed fixing
 - Improved app icon
 
