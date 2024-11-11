@@ -6,6 +6,7 @@ jna = "5.14.0"
 toast4j = "0.2.0"
 kotest = "5.9.1"
 junit = "5.10.3"
+svg2ico = "1.1"
 
 [libraries]
 toast4j = { module = "de.mobanisto:toast4j", version.ref = "toast4j" }
@@ -21,3 +22,4 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
+svg2ico = { id = "com.gitlab.svg2ico", version.ref = "svg2ico" }

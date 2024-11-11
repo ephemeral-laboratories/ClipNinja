@@ -1,11 +1,14 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
+import com.gitlab.svg2ico.Svg2IcoTask
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.compose.desktop.application.tasks.AbstractJPackageTask
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.svg2ico)
 }
 
 group = "garden.ephemeral.clipninja"
@@ -52,6 +55,13 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+val appIconIco by tasks.registering(Svg2IcoTask::class) {
+    source {
+        sourcePath = file("src/commonMain/resources/app-icon.svg")
+    }
+    destination = project.layout.buildDirectory.file("converted-icons/app-icon.ico")
+}
+
 compose.desktop {
     application {
         mainClass = "garden.ephemeral.clipninja.MainKt"
@@ -61,6 +71,7 @@ compose.desktop {
                 upgradeUuid = "8248B478-A580-4AAB-BBEF-EECEE1ED46E4"
                 menu = true
                 menuGroup = "Utilities"
+                iconFile.set(appIconIco.get().destination.get())
             }
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "ClipNinja"
@@ -68,6 +79,9 @@ compose.desktop {
         }
     }
 }
+
+// Works around lack of dependency from packageMsi to appIconIco
+tasks.withType<AbstractJPackageTask>().configureEach { dependsOn(appIconIco) }
 
 compose.resources {
     // It didn't seem to generate the Res file without this...
