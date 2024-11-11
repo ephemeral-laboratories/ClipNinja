@@ -1,3 +1,7 @@
+# Unreleased
+- Added subdomain matching for embed fixing
+- Improved app icon
+
 # 1.0.3
 - Added a second level of safety switch for showing all strings
 - Renamed application to avoid stepping on someone else's name
