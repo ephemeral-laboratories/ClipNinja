@@ -34,7 +34,7 @@ To run the application without going through the full installer build:
     ```
 5. Build the installers
     ```shell
-    ./gradlew packageDistributionForCurrentOS
+    ./gradlew clean packageDistributionForCurrentOS
     ```
 6. Over on GitHub, navigate to the tag and "Create release from tag".
     - Conventional title is the app name followed by the tag name
