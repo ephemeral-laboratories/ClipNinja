@@ -1,6 +1,6 @@
 [versions]
-kotlin = "2.0.0"
-compose = "1.6.11"
+kotlin = "2.1.0"
+compose = "1.7.3"
 buildkonfig = "0.15.1"
 jna = "5.14.0"
 toast4j = "0.2.0"
