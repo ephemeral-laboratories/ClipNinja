@@ -1,6 +1,7 @@
 # Unreleased
 - Added setting to run on startup
 - Fixed the icon for the installer and shortcuts it creates
+- Remember some of the settings across app restart (but not the dangerous ones)
 
 # 1.0.4
 - Changed fixup domain for TikTok to vxtiktok
