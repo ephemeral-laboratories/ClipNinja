@@ -7,6 +7,7 @@ toast4j = "0.2.0"
 kotest = "5.9.1"
 junit = "5.10.3"
 svg2ico = "1.1"
+multiplatform-settings = "1.2.0"
 
 [libraries]
 toast4j = { module = "de.mobanisto:toast4j", version.ref = "toast4j" }
@@ -16,6 +17,7 @@ kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref 
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
+multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatform-settings" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

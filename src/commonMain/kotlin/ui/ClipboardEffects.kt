@@ -16,7 +16,7 @@ fun ClipboardEffects(
     clipboardManager: ClipboardManager,
     clipboardEntries: MutableList<ClipboardHistoryEntry>,
     notifier: Notifier,
-    settings: Settings,
+    settings: AppSettings,
 ) {
     val fixers by derivedStateOf {
         buildList {

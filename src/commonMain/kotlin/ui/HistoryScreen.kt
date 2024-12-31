@@ -47,7 +47,7 @@ import org.jetbrains.compose.resources.stringResource
 fun HistoryScreen(
     clipboardManager: ClipboardManager,
     clipboardEntries: List<ClipboardHistoryEntry>,
-    settings: Settings,
+    settings: AppSettings,
     onSettingsClicked: () -> Unit
 ) {
     EphemeralLaboratoriesTheme {

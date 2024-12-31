@@ -22,7 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.russhwolf.settings.PropertiesSettings
 import garden.ephemeral.clipninja.BuildKonfig
+import garden.ephemeral.clipninja.autorun.rememberAutoRunRegistry
 import garden.ephemeral.clipninja.clipninja.generated.resources.Res
 import garden.ephemeral.clipninja.clipninja.generated.resources.copyright_format
 import garden.ephemeral.clipninja.clipninja.generated.resources.make_discord_embeds_work
@@ -32,9 +34,10 @@ import garden.ephemeral.clipninja.clipninja.generated.resources.show_all_text
 import garden.ephemeral.clipninja.clipninja.generated.resources.strip_tracking_parameters
 import garden.ephemeral.clipninja.clipninja.generated.resources.version_format
 import org.jetbrains.compose.resources.stringResource
+import java.util.Properties
 
 @Composable
-fun SettingsScreen(settings: Settings) {
+fun AppSettingsScreen(settings: AppSettings) {
 
     @Composable
     fun SwitchRow(state: MutableState<Boolean>, label: String) {
@@ -99,5 +102,5 @@ fun SettingsScreen(settings: Settings) {
 @Composable
 @Preview
 fun SettingsScreenPreview() {
-    SettingsScreen(Settings())
+    AppSettingsScreen(rememberAppSettings(rememberAutoRunRegistry(), PropertiesSettings(Properties())))
 }

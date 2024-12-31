@@ -8,6 +8,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onSibling
 import androidx.compose.ui.test.performClick
+import com.russhwolf.settings.PropertiesSettings
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
@@ -15,13 +16,14 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.Properties
 
-class SettingsScreenTest {
+class AppSettingsScreenTest {
     // XXX: JUnit 4 :(
     @get:Rule
     val compose = createComposeRule()
 
-    private lateinit var settings: Settings
+    private lateinit var settings: AppSettings
 
     private lateinit var showAllTextLabel: SemanticsNodeInteraction
     private lateinit var showAllTextSwitch: SemanticsNodeInteraction
@@ -40,9 +42,9 @@ class SettingsScreenTest {
     @Before
     fun setUp() {
         runTest {
-            settings = Settings()
+            settings = AppSettings(PropertiesSettings(Properties()))
             compose.setContent {
-                SettingsScreen(settings)
+                AppSettingsScreen(settings)
             }
             compose.awaitIdle()
 

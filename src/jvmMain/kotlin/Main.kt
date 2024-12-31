@@ -1,6 +1,5 @@
 package garden.ephemeral.clipninja
 
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -13,6 +12,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
+import com.russhwolf.settings.PreferencesSettings
 import garden.ephemeral.clipninja.autorun.rememberAutoRunRegistry
 import garden.ephemeral.clipninja.clipboard.rememberClipboardManager
 import garden.ephemeral.clipninja.clipninja.generated.resources.Res
@@ -21,26 +21,22 @@ import garden.ephemeral.clipninja.clipninja.generated.resources.action_settings
 import garden.ephemeral.clipninja.clipninja.generated.resources.action_show_window
 import garden.ephemeral.clipninja.clipninja.generated.resources.settings_title_format
 import garden.ephemeral.clipninja.notifications.rememberNotifier
+import garden.ephemeral.clipninja.ui.AppSettingsScreen
 import garden.ephemeral.clipninja.ui.Branding
 import garden.ephemeral.clipninja.ui.ClipboardEffects
 import garden.ephemeral.clipninja.ui.ClipboardHistoryEntry
 import garden.ephemeral.clipninja.ui.HistoryScreen
-import garden.ephemeral.clipninja.ui.SettingsScreen
-import garden.ephemeral.clipninja.ui.rememberSettings
+import garden.ephemeral.clipninja.ui.rememberAppSettings
 import org.jetbrains.compose.resources.stringResource
+import java.util.prefs.Preferences
+
+private val preferencesNode = Preferences.userRoot().node("garden/ephemeral/clipninja/ui")
 
 fun main() = application {
     var showHistoryWindow by remember { mutableStateOf(true) }
     var showSettingsWindow by remember { mutableStateOf(false) }
-    val settings = rememberSettings()
     val autoRunRegistry = rememberAutoRunRegistry()
-
-    LaunchedEffect(Unit) {
-        settings.runOnStartup.value = autoRunRegistry.isInstalled()
-    }
-    LaunchedEffect(settings.runOnStartup.value) {
-        settings.runOnStartup.value = autoRunRegistry.updateInstalled(settings.runOnStartup.value)
-    }
+    val settings = rememberAppSettings(autoRunRegistry, PreferencesSettings(preferencesNode))
 
     val trayState = rememberTrayState()
     Tray(
@@ -94,7 +90,7 @@ fun main() = application {
             resizable = false,
             onCloseRequest = { showSettingsWindow = false }
         ) {
-            SettingsScreen(settings)
+            AppSettingsScreen(settings)
         }
     }
 }
